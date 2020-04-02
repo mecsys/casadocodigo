@@ -59,7 +59,8 @@ public class RelatorioProdutosController {
 			newNode
 				.put("quantidade", produtos.size())
 				.put("produtos", report.writeValueAsString(produtos));
-				
+			
+			System.out.println(report.writeValueAsString(produtos));
 			
 			json = report.writeValueAsString(newNode);
 			
