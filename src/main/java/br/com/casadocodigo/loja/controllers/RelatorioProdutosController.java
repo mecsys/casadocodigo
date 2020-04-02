@@ -45,6 +45,7 @@ public class RelatorioProdutosController {
 	public String relatorioProdutosJson() {
 		
 		List<Produto> produtos = produtoDao.listar();
+		System.out.println("Produtos size: " + produtos.size());
 		
 		ObjectMapper report = new ObjectMapper();
 		
