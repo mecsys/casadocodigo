@@ -3,12 +3,12 @@ package br.com.casadocodigo.loja.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import br.com.casadocodigo.loja.dao.ProdutoDAO;
 import br.com.casadocodigo.loja.models.Produto;
@@ -39,15 +39,24 @@ public class RelatorioProdutosController {
 	private ProdutoDAO produtoDao;
 	
 	@RequestMapping(value = "/relatorio-produtos", method = RequestMethod.GET)
-	public List<Produto> relatorioProdutosJson() {
+	public String relatorioProdutosJson() {
 		
 		List<Produto> produtos = produtoDao.listar();
 		
-		for (Produto produto : produtos) {
-			System.out.println(produto.toString());
-		}
+		ObjectMapper report = new ObjectMapper();
 		
-		return produtos;
+		String json = "";
+		
+		try {
+			
+			json = report.writeValueAsString(produtos);
+			
+		} catch (JsonProcessingException e) {
+			
+			e.printStackTrace();
+			
+		}
+		return json;
 		
 	}
 
