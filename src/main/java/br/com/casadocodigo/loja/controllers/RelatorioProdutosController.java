@@ -39,7 +39,7 @@ public class RelatorioProdutosController {
 		
 		List<Produto> produtos = produtoDao.listar();
 		
-		return produtos.toString();
+		return "URL /relatorio-produtos executada";
 		
 	}
 
