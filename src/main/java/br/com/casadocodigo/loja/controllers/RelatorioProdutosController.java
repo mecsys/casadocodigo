@@ -46,6 +46,7 @@ public class RelatorioProdutosController {
 		
 		List<Produto> produtos = produtoDao.listar();
 		System.out.println("Produtos size: " + produtos.size());
+		System.out.println(produtos.toString());
 		
 		ObjectMapper report = new ObjectMapper();
 		
@@ -58,6 +59,7 @@ public class RelatorioProdutosController {
 			newNode
 				.put("quantidade", produtos.size())
 				.put("produtos", report.writeValueAsString(produtos));
+				
 			
 			json = report.writeValueAsString(newNode);
 			
