@@ -58,7 +58,7 @@ public class RelatorioProdutosController {
 			ObjectNode newNode = ((ObjectNode) node).put("dataGeracao", new Date().getTime());
 			newNode
 				.put("quantidade", produtos.size())
-				.put("produtos", report.writeValueAsBytes(produtos));
+				.put("produtos", report.writeValueAsString(produtos));
 			
 			json = report.writeValueAsString(newNode);
 			
