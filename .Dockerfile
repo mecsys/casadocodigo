@@ -1,4 +1,4 @@
-FROM tomcat:8.5
+FROM tomcat:9
 
 MAINTAINER Isaac Mecchi  <isaacmecchi@gmail.com>
 
