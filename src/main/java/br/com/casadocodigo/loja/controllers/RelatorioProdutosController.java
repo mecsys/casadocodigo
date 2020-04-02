@@ -1,5 +1,6 @@
 package br.com.casadocodigo.loja.controllers;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,7 +9,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 
 import br.com.casadocodigo.loja.dao.ProdutoDAO;
 import br.com.casadocodigo.loja.models.Produto;
@@ -49,7 +52,13 @@ public class RelatorioProdutosController {
 		
 		try {
 			
-			json = report.writeValueAsString(produtos);
+			JsonNode node = report.createObjectNode();
+			ObjectNode newNode = ((ObjectNode) node).put("dataGeracao", new Date().getTime());
+			newNode
+				.put("quantidade", produtos.size())
+				.put("produtos", report.writeValueAsString(produtos));
+			
+			json = report.writeValueAsString(newNode);
 			
 		} catch (JsonProcessingException e) {
 			
