@@ -4,7 +4,7 @@ stages:
   - runScriptConfig:
       image: maven:3-jdk-9
       shellScript: |-
-        mvn clean package
+        mvn clean package -D skipTests=true
 - name: Publish
   steps:
   - publishImageConfig:
