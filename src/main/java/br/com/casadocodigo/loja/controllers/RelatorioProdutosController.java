@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import br.com.casadocodigo.loja.dao.ProdutoDAO;
 import br.com.casadocodigo.loja.models.Produto;
@@ -31,15 +32,13 @@ import br.com.casadocodigo.loja.models.Produto;
  * 			https://cursos.alura.com.br/course/springmvc-2-integracao-cache-seguranca-e-templates/task/12233
  */
 
-@Controller
+@RestController
 public class RelatorioProdutosController {
 	
 	@Autowired
 	private ProdutoDAO produtoDao;
 	
-	@ResponseBody
 	@RequestMapping(value = "/relatorio-produtos", method = RequestMethod.GET)
-	@Transactional
 	public List<Produto> relatorioProdutosJson() {
 		
 		List<Produto> produtos = produtoDao.listar();
