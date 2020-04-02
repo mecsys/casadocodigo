@@ -40,7 +40,7 @@ public class RelatorioProdutosController {
 	@ResponseBody
 	@RequestMapping(value = "/relatorio-produtos", method = RequestMethod.GET)
 	@Transactional
-	public String relatorioProdutosJson() {
+	public List<Produto> relatorioProdutosJson() {
 		
 		List<Produto> produtos = produtoDao.listar();
 		
@@ -48,7 +48,7 @@ public class RelatorioProdutosController {
 			System.out.println(produto.toString());
 		}
 		
-		return "URL /relatorio-produtos executada";
+		return produtos;
 		
 	}
 
