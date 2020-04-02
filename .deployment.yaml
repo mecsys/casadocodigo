@@ -16,6 +16,12 @@ spec:
       - backend:
           serviceName: casadocodigo-service
           servicePort: 8080
+  - host: cdc.mecsys.com.br
+    http:
+      paths:
+      - backend:
+          serviceName: casadocodigo-service
+          servicePort: 8080
   tls:
   - hosts:
     - casadocodigo.io.k8s.ic.unicamp.br
