@@ -19,6 +19,7 @@ spec:
   tls:
   - hosts:
     - casadocodigo.io.k8s.ic.unicamp.br
+    - cdc.mecsys.com.br
     secretName: casadocodigo-crt
 ---
 kind: Service
