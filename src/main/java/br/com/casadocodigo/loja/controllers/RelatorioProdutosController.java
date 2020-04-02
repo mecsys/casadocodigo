@@ -4,7 +4,10 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import br.com.casadocodigo.loja.dao.ProdutoDAO;
 import br.com.casadocodigo.loja.models.Produto;
@@ -34,10 +37,16 @@ public class RelatorioProdutosController {
 	@Autowired
 	private ProdutoDAO produtoDao;
 	
-	@RequestMapping("/relatorio-produtos")
-	public String relatorioProdutos() {
+	@ResponseBody
+	@RequestMapping(value = "/relatorio-produtos", method = RequestMethod.GET)
+	@Transactional
+	public String relatorioProdutosJson() {
 		
 		List<Produto> produtos = produtoDao.listar();
+		
+		for (Produto produto : produtos) {
+			System.out.println(produto.toString());
+		}
 		
 		return "URL /relatorio-produtos executada";
 		
