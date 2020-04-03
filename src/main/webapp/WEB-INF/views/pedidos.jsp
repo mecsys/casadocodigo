@@ -23,8 +23,8 @@
 				<tr>
 					<td>${pedido.id }</td>
 					<td>${pedido.valor }</td>
-					<td>${pedido.dataPedido }</td>
-					<td>${pedido.titulos }</td>
+					<td>${pedido.data }</td>
+					<td>${pedido.produtos[0].titulo }</td>
 				</tr>
 			</c:forEach>
 		</table>
