@@ -47,7 +47,7 @@ public class RelatorioProdutosController {
 	
 	@ResponseBody
 	@RequestMapping(value = "/relatorio-produtos", method = RequestMethod.GET, produces = "application/json, charset=UTF-8")
-	public String relatorioProdutosJson(@RequestParam(value = "data", required = false) String data) throws ParseException {
+	public String relatorioProdutosJson(@RequestParam(value = "data", required = false) String data) {
 		
 		final List<Produto> produtos;
 		
