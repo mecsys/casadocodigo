@@ -9,6 +9,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Repository;
 
+import br.com.casadocodigo.loja.models.Produto;
 import br.com.casadocodigo.loja.models.Usuario;
 
 @Repository
@@ -31,5 +32,10 @@ public class UsuarioDAO implements UserDetailsService{
 
 	public void gravar(Usuario usuario) {
 		manager.persist(usuario);
+	}
+	
+	public List<Usuario> listar() {
+		return manager.createQuery("select u from Usuario u", Usuario.class)
+				.getResultList();
 	}
 }
