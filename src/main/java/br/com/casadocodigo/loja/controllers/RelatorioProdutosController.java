@@ -46,18 +46,18 @@ public class RelatorioProdutosController {
 	private ProdutoDAO produtoDao;
 	
 	@ResponseBody
-	@RequestMapping(value = "/relatorio-produtos", method = RequestMethod.GET, produces = "application/json, charset=UTF-8")
+	@RequestMapping(value = "/relatorio-produtos", method = RequestMethod.GET)
 	public String relatorioProdutosJson(@RequestParam(value = "data", required = false) String data) {
 		
 		final List<Produto> produtos;
 		
-		if (data.isEmpty()) {
+		if (data != null) {
 			
-			produtos = produtoDao.listar();
+			produtos = produtoDao.listar(data);
 			
 		} else  {
 				
-			produtos = produtoDao.listar(data);
+			produtos = produtoDao.listar();
 				
 		}
 		
