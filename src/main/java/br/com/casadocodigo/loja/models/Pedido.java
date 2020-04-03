@@ -5,12 +5,15 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 public class Pedido {
 
 	private int id;
 
 	private BigDecimal valor;
 
+	@DateTimeFormat
 	private Calendar data;
 
 	private List<Produto> produtos = new ArrayList<>();
