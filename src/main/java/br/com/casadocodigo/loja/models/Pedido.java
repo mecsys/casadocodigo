@@ -1,7 +1,6 @@
 package br.com.casadocodigo.loja.models;
 
 import java.math.BigDecimal;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -39,15 +38,6 @@ public class Pedido {
 
 	public Calendar getData() {
 		return data;
-	}
-	
-	public String getDataFormatada() {
-		
-		   SimpleDateFormat format1 = new SimpleDateFormat("dd-MM-yy");
-		   String formatted = format1.format(data.getTime());
-		
-		return formatted;
-		
 	}
 
 	public void setData(Calendar data) {

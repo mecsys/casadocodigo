@@ -12,31 +12,30 @@ import br.com.casadocodigo.loja.models.Pedido;
 
 @Controller
 public class PedidosServicoController {
-	
+
 	@Autowired
 	private RestTemplate restTemplate;
 
 	@RequestMapping("/pedidos")
 	public ModelAndView listarPedidos(RedirectAttributes model) {
-		
+
 		ModelAndView modelAndView = new ModelAndView("pedidos");
-		
+
 		final String uri = "https://book-payment.herokuapp.com/orders";
-		
-		 ResponseEntity<Pedido[]> response = restTemplate.getForEntity(uri, Pedido[].class);
-		 Pedido[] pedidos = response.getBody();
-		 
-		 for (Pedido pedido : pedidos) {
-			
-			 System.out.println("Lista de pedidos: " + pedido);
-			 System.out.println("---");
-			 
+		ResponseEntity<Pedido[]> response = restTemplate.getForEntity(uri, Pedido[].class);
+		Pedido[] pedidos = response.getBody();
+
+		// testando json pedidos para array de pedidos
+		for (Pedido pedido : pedidos) {
+
+			System.out.println("Lista de pedidos: " + pedido);
+			System.out.println("---");
+
 		}
-		
+
 		modelAndView.addObject("pedidos", pedidos);
-		model.addFlashAttribute("sucesso", "Lista de Produtos Obtida com Sucesso");
-		
+
 		return modelAndView;
 	}
-	
+
 }
