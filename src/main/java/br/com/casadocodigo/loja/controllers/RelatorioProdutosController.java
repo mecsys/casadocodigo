@@ -45,8 +45,6 @@ public class RelatorioProdutosController {
 	public String relatorioProdutosJson() {
 		
 		List<Produto> produtos = produtoDao.listar();
-		System.out.println("Produtos size: " + produtos.size());
-		System.out.println(produtos.toString());
 		
 		ObjectMapper report = new ObjectMapper();
 		
@@ -55,10 +53,12 @@ public class RelatorioProdutosController {
 		try {
 			
 			JsonNode node = report.createObjectNode();
+			
 			ObjectNode newNode = ((ObjectNode) node).put("dataGeracao", new Date().getTime());
-			newNode
-				.put("quantidade", produtos.size())
-				.put("produtos", report.writeValueAsString(produtos));
+			newNode.put("quantidade", produtos.size());
+			
+			node = report.valueToTree(produtos);
+			newNode.put("produtos", node);
 			
 			json = report.writeValueAsString(newNode);
 			
