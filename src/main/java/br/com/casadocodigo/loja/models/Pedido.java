@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-public class Pedidos {
+public class Pedido {
 
 	private int id;
 
@@ -50,7 +50,7 @@ public class Pedidos {
 	@Override
 	public String toString() {
 		
-		return "Produto [id=" + id + ", valor=" + valor + ", data=" + data + ", produtos=" + produtos + "]";
+		return "Pedido [id=" + id + ", valor=" + valor + ", data=" + data + ", produtos=" + produtos + "]";
 		
 	}
 
