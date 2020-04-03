@@ -9,7 +9,7 @@
 	<section id="index-section" class="container middle">
 		
 		<div class="container">
-		<h1>Lista de Pedidos</h1>
+		<h1>Lista de Pedidos atuais</h1>
 		<p> ${sucesso} </p>
 		<p> ${falha} </p>
 	
@@ -25,12 +25,9 @@
 					<td>${pedido.id }</td>
 					<td>${pedido.valor }</td>
 					<td><fmt:formatDate value="${pedido.data.time }" pattern="dd/MM/yy"/></td>
-<%-- 					<td>${pedido.produtos[0].titulo }</td> --%>
 					<td>
 						<c:forEach items="${pedido.produtos }" var="produto">
-						
 							${produto.titulo }, 
-						
 						</c:forEach>
 					</td>
 				</tr>
