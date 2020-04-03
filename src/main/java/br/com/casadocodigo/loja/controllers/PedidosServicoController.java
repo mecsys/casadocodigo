@@ -1,5 +1,6 @@
 package br.com.casadocodigo.loja.controllers;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.client.RestTemplate;
@@ -11,12 +12,13 @@ import br.com.casadocodigo.loja.models.Produto;
 @Controller
 public class PedidosServicoController {
 	
+	@Autowired
 	private RestTemplate restTemplate;
 
 	@RequestMapping("/pedidos")
 	public ModelAndView listarPedidos(RedirectAttributes model) {
 		
-		String uri = "https://book-payment.herokuapp.com/orders";
+		final String uri = "https://book-payment.herokuapp.com/orders";
 		String response = restTemplate.getForObject(uri, String.class);
 		
 		System.out.println(response);
