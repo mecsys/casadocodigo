@@ -23,7 +23,7 @@
 				<tr>
 					<td>${pedido.id }</td>
 					<td>${pedido.valor }</td>
-					<td>${pedido.data }</td>
+					<td>${pedido.getDataFormatada }</td>
 					<td>${pedido.produtos[0].titulo }</td>
 				</tr>
 			</c:forEach>
