@@ -6,7 +6,9 @@ import java.util.Calendar;
 import java.util.List;
 
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.stereotype.Component;
 
+@Component
 public class Pedido {
 
 	private int id;
