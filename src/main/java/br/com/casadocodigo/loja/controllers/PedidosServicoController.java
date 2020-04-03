@@ -28,7 +28,7 @@ public class PedidosServicoController {
 		 
 		 for (Pedido pedido : pedidos) {
 			
-			 System.out.println("Lista de pedidos: " + pedidos);
+			 System.out.println("Lista de pedidos: " + pedido);
 			 System.out.println("---");
 			 
 		}
