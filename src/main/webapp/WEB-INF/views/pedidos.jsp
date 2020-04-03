@@ -25,8 +25,14 @@
 					<td>${pedido.id }</td>
 					<td>${pedido.valor }</td>
 					<td><fmt:formatDate value="${pedido.data.time }" pattern="dd/MM/yy"/></td>
-					
-					<td>${pedido.produtos[0].titulo }</td>
+<%-- 					<td>${pedido.produtos[0].titulo }</td> --%>
+					<td>
+						<c:forEach items="${pedido.produtos }" var="produto">
+						
+							${produto.titulo }, 
+						
+						</c:forEach>
+					</td>
 				</tr>
 			</c:forEach>
 		</table>
