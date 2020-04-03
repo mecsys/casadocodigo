@@ -1,5 +1,7 @@
 package br.com.casadocodigo.loja.controllers;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,6 +20,9 @@ public class PedidosServicoController {
 	@RequestMapping("/pedidos")
 	public ModelAndView listarPedidos(RedirectAttributes model) {
 		
+		ModelAndView modelAndView = new ModelAndView("pedidos");
+//		modelAndView.addObject("produtos", produtos);
+		
 		final String uri = "https://book-payment.herokuapp.com/orders";
 		String response = restTemplate.getForObject(uri, String.class);
 		
@@ -25,7 +30,7 @@ public class PedidosServicoController {
 		
 		model.addFlashAttribute("sucesso", "Lista de Produtos Obtida com Sucesso");
 		
-		return new ModelAndView("redirect:pedidos");
+		return modelAndView;
 	}
 	
 }
