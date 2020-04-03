@@ -21,13 +21,13 @@ public class PedidosServicoController {
 	public ModelAndView listarPedidos(RedirectAttributes model) {
 		
 		ModelAndView modelAndView = new ModelAndView("pedidos");
-//		modelAndView.addObject("produtos", produtos);
 		
 		final String uri = "https://book-payment.herokuapp.com/orders";
 		String response = restTemplate.getForObject(uri, String.class);
 		
 		System.out.println(response);
 		
+		modelAndView.addObject("pedidos", response);
 		model.addFlashAttribute("sucesso", "Lista de Produtos Obtida com Sucesso");
 		
 		return modelAndView;
