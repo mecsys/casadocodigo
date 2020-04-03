@@ -1,12 +1,16 @@
 package br.com.casadocodigo.loja.controllers;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
@@ -35,16 +39,27 @@ import br.com.casadocodigo.loja.models.Produto;
  * 			https://cursos.alura.com.br/course/springmvc-2-integracao-cache-seguranca-e-templates/task/12233
  */
 
-@RestController
+@Controller
 public class RelatorioProdutosController {
 	
 	@Autowired
 	private ProdutoDAO produtoDao;
 	
-	@RequestMapping(value = "/relatorio-produtos", method = RequestMethod.GET)
-	public String relatorioProdutosJson() {
+	@ResponseBody
+	@RequestMapping(value = "/relatorio-produtos", method = RequestMethod.GET, produces = "application/json, charset=UTF-8")
+	public String relatorioProdutosJson(@RequestParam(value = "data", required = false) String data) throws ParseException {
 		
-		List<Produto> produtos = produtoDao.listar();
+		final List<Produto> produtos;
+		
+		if (data.isEmpty()) {
+			
+			produtos = produtoDao.listar();
+			
+		} else  {
+				
+			produtos = produtoDao.listar(data);
+				
+		}
 		
 		ObjectMapper report = new ObjectMapper();
 		
@@ -52,21 +67,27 @@ public class RelatorioProdutosController {
 		
 		try {
 			
-			JsonNode node = report.createObjectNode();
+			// Criar um nó JSON para manipular
+			JsonNode jsonNode = report.createObjectNode();
 			
-			ObjectNode newNode = ((ObjectNode) node).put("dataGeracao", new Date().getTime());
-			newNode.put("quantidade", produtos.size());
+			// Criar um objectNode para acrescentar nós aninhados
+			ObjectNode objectNode = ((ObjectNode) jsonNode).put("dataGeracao", new Date().getTime());
+			objectNode.put("quantidade", produtos.size());
 			
-			node = report.valueToTree(produtos);
-			newNode.put("produtos", node);
+			// Converter o objeto lista de produtos em um nó JSON
+			// e adicionar a um atributo, como no aninhado.
+			jsonNode = report.valueToTree(produtos);
+			objectNode.put("produtos", jsonNode);
 			
-			json = report.writeValueAsString(newNode);
+			// Converter o objeto JSON em uma String
+			json = report.writeValueAsString(objectNode);
 			
 		} catch (JsonProcessingException e) {
 			
 			e.printStackTrace();
 			
 		}
+		
 		return json;
 		
 	}

@@ -1,6 +1,9 @@
 package br.com.casadocodigo.loja.dao;
 
 import java.math.BigDecimal;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -28,6 +31,17 @@ public class ProdutoDAO {
 		return manager.createQuery("select distinct(p) from Produto p join fetch p.precos", Produto.class)
 				.getResultList();
 	}
+	
+	public List<Produto> listar(String data) throws ParseException {
+		
+		Date filterDate;
+		
+		filterDate = new SimpleDateFormat("yyyy/MM/dd").parse(data);	
+		
+		return manager.createQuery("select distinct(p) from Produto p join fetch p.precos where p.dataLancamento => :filterDate",
+				Produto.class).setParameter("filterDate", filterDate)
+				.getResultList();
+	}
 
 	public Produto find(Integer id) {
         return manager.createQuery("select distinct(p) from Produto p join fetch p.precos precos where p.id = :id", 
@@ -41,4 +55,5 @@ public class ProdutoDAO {
 	    query.setParameter("tipoPreco", tipoPreco);
 	    return query.getSingleResult();
 	}
+
 }
