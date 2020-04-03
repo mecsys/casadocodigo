@@ -21,7 +21,7 @@ public class PedidosServicoController {
 		ModelAndView modelAndView = new ModelAndView("pedidos");
 		
 		final String uri = "https://book-payment.herokuapp.com/orders";
-		Pedidos pedidos = restTemplate.getForObject(uri, Pedidos.class);
+		Pedidos[] pedidos = restTemplate.getForObject(uri, Pedidos[].class);
 		
 		System.out.println("Lista de pedidos: " + pedidos);
 		
