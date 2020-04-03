@@ -32,7 +32,7 @@ public class ProdutoDAO {
 	
 	public List<Produto> listar(String data) {
 		
-		return manager.createQuery("select distinct(p) from Produto p join fetch p.dataLancamento where p.dataLancamento > :data",
+		return manager.createQuery("select distinct(p), p.dataLancamento from Produto p join fetch p.precos where p.dataLancamento > :data",
 				Produto.class).setParameter("data", Date.valueOf(data))
 				.getResultList();
 	}
