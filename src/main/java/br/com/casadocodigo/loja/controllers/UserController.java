@@ -2,14 +2,21 @@ package br.com.casadocodigo.loja.controllers;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.com.casadocodigo.loja.dao.UsuarioDAO;
 import br.com.casadocodigo.loja.models.Produto;
+import br.com.casadocodigo.loja.models.TipoPreco;
 import br.com.casadocodigo.loja.models.Usuario;
 
 @Controller
@@ -20,6 +27,9 @@ public class UserController {
 	@Autowired
 	private UsuarioDAO usuarioDao;
 	
+	@Autowired 
+	private Usuario usuario;
+	
 	@RequestMapping("/usuarios")
 	public ModelAndView listarUsuarios(RedirectAttributes model) {
 		
@@ -28,22 +38,32 @@ public class UserController {
 		usuarios = usuarioDao.listar();
 		
 		ModelAndView modelAndView = new ModelAndView("usuarios/lista");
-	
 		modelAndView.addObject("usuarios", usuarios);
-
 
 		return modelAndView;
 		
 	}
 	
-	@RequestMapping("/usuarios/form")
-	public ModelAndView form(RedirectAttributes model) {
+	@RequestMapping("/usuario/form")
+	public ModelAndView form(Usuario usuario) {
 		
-		ModelAndView modelAndView = new ModelAndView("usuarios/form");
+		return new ModelAndView("produtos/form");
+		
+	}
+	
+	@RequestMapping(method = RequestMethod.POST)
+	public ModelAndView gravar(@Valid Usuario usuario, BindingResult result, 
+			RedirectAttributes model) {
+		
+		if(result.hasErrors()) {
+			return form(usuario);
+		}
+		
+		usuarioDao.gravar(usuario);
 		
 		model.addFlashAttribute("sucesso", "Usuario cadastrado com sucesso!");
 		
-		return modelAndView;
+		return new ModelAndView("usuarios/lista");
 		
 	}
 	

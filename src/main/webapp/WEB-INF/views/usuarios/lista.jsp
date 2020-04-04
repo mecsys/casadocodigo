@@ -9,6 +9,7 @@
 	<section id="index-section" class="container middle">
 	
 	<div class="container">
+		<br />
 	    <a href="${s:mvcUrl('UC#form').build()}">Novo usuário</a>
 		<h1>Lista de Usuarios</h1>
 		<p> ${sucesso} </p>

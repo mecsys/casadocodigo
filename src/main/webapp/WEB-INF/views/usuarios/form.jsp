@@ -11,7 +11,7 @@
 	
 	<div class="container">
 		<h1>Cadastro de Usuario</h1>
-		<form:form action="${s:mvcUrl('UC#form').build() }" method="post" commandName="usuario" enctype="multipart/form-data">
+		<form:form action="${s:mvcUrl('UC#gravar').build() }" method="post" commandName="usuario" enctype="multipart/form-data">
 			<div class="form-group">
 				<label>Nome</label>
 				<form:input path="nome" cssClass="form-control" />
