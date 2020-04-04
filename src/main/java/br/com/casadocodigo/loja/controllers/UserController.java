@@ -20,8 +20,6 @@ import br.com.casadocodigo.loja.validation.UsuarioValidation;
 
 @Controller
 public class UserController {
-
-	// semelhante ao cadastro de produtos
 	
 	@Autowired
 	private UsuarioDAO usuarioDao;

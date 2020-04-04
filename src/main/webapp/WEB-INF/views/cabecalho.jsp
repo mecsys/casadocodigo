@@ -20,7 +20,7 @@
 					</security:authorize>
 						<li>
 							<a href="${s:mvcUrl('CCC#itens').build() }" rel="nofollow">
-								<s:message code="menu.carrinho" arguments="${carrinhoCompras.quantidade}" />
+<%-- 								<s:message code="menu.carrinho" arguments="${carrinhoCompras.quantidade}" /> --%>
 							</a>
 						</li>
 						<li>
