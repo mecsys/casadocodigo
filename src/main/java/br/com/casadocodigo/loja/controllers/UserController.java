@@ -19,9 +19,6 @@ public class UserController {
 	@Autowired
 	private UsuarioDAO usuarioDao;
 	
-	@Autowired 
-	private Usuario usuario;
-	
 //	@InitBinder
 //	public void initBinder(WebDataBinder binder) {
 //		binder.addValidators(new UsuarioValidation());
