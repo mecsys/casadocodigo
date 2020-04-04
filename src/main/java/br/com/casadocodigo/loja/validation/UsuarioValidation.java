@@ -17,11 +17,25 @@ public class UsuarioValidation implements Validator {
 	public void validate(Object target, Errors errors) {
 		ValidationUtils.rejectIfEmpty(errors, "nome", "field.required");
 		ValidationUtils.rejectIfEmpty(errors, "email", "field.required");
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "senha",
+				"required.senha", "Field name is required.");
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "senhaConfirma",
+				"required.senhaConfirma", "Field name is required.");
 
 		Usuario usuario = (Usuario) target;
-		if (usuario.getPassword() == null) {
-			errors.rejectValue("senha", "field.required");
+		
+		if(!(usuario.getSenha().equals(usuario.getSenhaConfirma()))){
+			errors.rejectValue("senha", "notmatch.senha");
 		}
+		
+		if(!(usuario.getSenha().equals(usuario.getSenhaConfirma()))){
+			errors.rejectValue("senha", "notmatch.senha");
+		}
+		
+		if(usuario.getSenha().length() < 5) {
+			errors.rejectValue("senha", "senha.tamanho");
+		}
+		
 	}
 
 }

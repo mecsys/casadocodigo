@@ -57,7 +57,16 @@ public class UserController {
 			RedirectAttributes model) {
 		
 		if(result.hasErrors()) {
+			
+			model.addFlashAttribute("falha", "Erro no cadastro de usuario!");
 			return form(usuario);
+			
+		}
+		
+		if(usuarioDao.hasUserByUsername(usuario.getEmail())) {
+			
+			model.addFlashAttribute("falha", "Usuario ja cadastrado!");
+			return new ModelAndView("usuarios/lista");
 		}
 		
 		usuarioDao.gravar(usuario);
