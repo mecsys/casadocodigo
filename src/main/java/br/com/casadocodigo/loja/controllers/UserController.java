@@ -45,10 +45,10 @@ public class UserController {
 		
 	}
 	
-	@RequestMapping("/usuario/form")
+	@RequestMapping("/usuarios/form")
 	public ModelAndView form(Usuario usuario) {
 		
-		return new ModelAndView("produtos/form");
+		return new ModelAndView("usuarios/form");
 		
 	}
 	
