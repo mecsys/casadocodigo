@@ -48,27 +48,27 @@ public class UserController {
 		
 	}
 	
-	@RequestMapping("/usuario/form")
-	public ModelAndView form(Usuario usuario) {
-		
-		return new ModelAndView("produtos/form");
-		
-	}
-	
-	@RequestMapping(method = RequestMethod.POST)
-	public ModelAndView gravar(@Valid Usuario usuario, BindingResult result, 
-			RedirectAttributes model) {
-		
-		if(result.hasErrors()) {
-			return form(usuario);
-		}
-		
-		usuarioDao.gravar(usuario);
-		
-		model.addFlashAttribute("sucesso", "Usuario cadastrado com sucesso!");
-		
-		return new ModelAndView("usuarios/lista");
-		
-	}
+//	@RequestMapping("/usuario/form")
+//	public ModelAndView form(Usuario usuario) {
+//		
+//		return new ModelAndView("produtos/form");
+//		
+//	}
+//	
+//	@RequestMapping(method = RequestMethod.POST)
+//	public ModelAndView gravar(@Valid Usuario usuario, BindingResult result, 
+//			RedirectAttributes model) {
+//		
+//		if(result.hasErrors()) {
+//			return form(usuario);
+//		}
+//		
+//		usuarioDao.gravar(usuario);
+//		
+//		model.addFlashAttribute("sucesso", "Usuario cadastrado com sucesso!");
+//		
+//		return new ModelAndView("usuarios/lista");
+//		
+//	}
 	
 }
