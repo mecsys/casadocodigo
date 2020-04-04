@@ -26,9 +26,7 @@ public class Usuario implements UserDetails {
 	private String senhaConfirma;
 
 	@ManyToMany(fetch = FetchType.EAGER)
-	@JoinTable(name = "Usuario_Role",
-		joinColumns = @JoinColumn(name = "email"), 
-		inverseJoinColumns = @JoinColumn(name = "role_nome"))
+	@JoinTable(name = "Usuario_Role", joinColumns = @JoinColumn(name = "email"), inverseJoinColumns = @JoinColumn(name = "role_nome"))
 	private List<Role> roles = new ArrayList<>();
 
 	public String getEmail() {
@@ -45,6 +43,14 @@ public class Usuario implements UserDetails {
 
 	public void setSenha(String senha) {
 		this.senha = senha;
+	}
+
+	public String getSenhaConfirma() {
+		return senhaConfirma;
+	}
+
+	public void setSenhaConfirma(String senhaConfirma) {
+		this.senhaConfirma = senhaConfirma;
 	}
 
 	public String getNome() {
@@ -97,5 +103,5 @@ public class Usuario implements UserDetails {
 	public boolean isEnabled() {
 		return true;
 	}
-	
+
 }
