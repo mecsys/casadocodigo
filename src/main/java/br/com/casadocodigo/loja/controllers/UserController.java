@@ -29,10 +29,10 @@ public class UserController {
 	@Autowired 
 	private Usuario usuario;
 	
-	@InitBinder
-	public void initBinder(WebDataBinder binder) {
-		binder.addValidators(new UsuarioValidation());
-	}
+//	@InitBinder
+//	public void initBinder(WebDataBinder binder) {
+//		binder.addValidators(new UsuarioValidation());
+//	}
 	
 	@RequestMapping("/usuarios")
 	public ModelAndView listarUsuarios(RedirectAttributes model) {
