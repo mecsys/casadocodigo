@@ -19,18 +19,18 @@
 			</div>
 			<div class="form-group">
 		        <label>Email</label>
-				<form:textarea path="email" cssClass="form-control" />
+				<form:input path="email" cssClass="form-control" />
 		        <form:errors path="email" />
 			</div>
 			<div class="form-group">
 				<label>Senha</label>
-				<form:input path="senha" cssClass="form-control" />
+				<form:password path="senha" cssClass="form-control" />
 		        <form:errors path="senha" />
 			</div>
 			<div class="form-group">
 				<label>Senha repetida</label>
-				<form:input path="senharepetida" cssClass="form-control"/>
-		        <form:errors path="senharepetida" />
+				<form:password path="senhaConfirma" cssClass="form-control"/>
+		        <form:errors path="senhaConfirma" />
 			</div>
 			<button type="submit" class="btn btn-primary">Cadastrar</button>
 		</form:form>
