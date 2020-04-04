@@ -16,7 +16,7 @@
 		<link href="https://plus.googlecom/108540024862647200608" rel="publisher" />
 		<title>${titulo } - Casa do Código</title>
 		<link href="${contextPath}resources/css/cssbase-min.css" rel="stylesheet" type="text/css" media="all" />
-		<link href='http://fonts.googleapis.com/css?family=Droid+Sans:400,700' rel='stylesheet' />
+		<link href='https://fonts.googleapis.com/css?family=Droid+Sans:400,700' rel='stylesheet' />
 		<link href="${contextPath}resources/css/fonts.css" rel="stylesheet" type="text/css" media="all" />
 		<link href="${contextPath}resources/css/fontello-ie7.css" rel="stylesheet" type="text/css" media="all" />
 		<link href="${contextPath}resources/css/fontello-embedded.css" rel="stylesheet" type="text/css" media="all" />
