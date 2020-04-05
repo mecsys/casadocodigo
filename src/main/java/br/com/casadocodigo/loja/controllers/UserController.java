@@ -65,14 +65,14 @@ public class UserController {
 		if(usuarioDao.hasUserByUsername(usuario.getEmail())) {
 			
 			model.addFlashAttribute("falha", "Usuario ja cadastrado!");
-			return new ModelAndView("redirect:/usuarios/lista");
+			return new ModelAndView("redirect:/usuarios");
 		}
 		
 		usuarioDao.gravar(usuario);
 		
 		model.addFlashAttribute("sucesso", "Usuario cadastrado com sucesso!");
 		
-		return new ModelAndView("redirect:/usuarios/lista");
+		return new ModelAndView("redirect:/usuarios");
 		
 	}
 	
