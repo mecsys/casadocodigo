@@ -5,12 +5,13 @@ import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 
 import br.com.casadocodigo.loja.models.Usuario;
+import br.com.casadocodigo.loja.models.UsuarioCadastro;
 
 public class UsuarioValidation implements Validator {
 
 	@Override
 	public boolean supports(Class<?> clazz) {
-		return Usuario.class.isAssignableFrom(clazz);
+		return UsuarioCadastro.class.isAssignableFrom(clazz);
 	}
 
 	@Override
@@ -23,7 +24,7 @@ public class UsuarioValidation implements Validator {
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "senhaConfirma",
 				"menu.usuarios.required.senhaConfirma", "Field name is required.");
 
-		Usuario usuario = (Usuario) target;
+		UsuarioCadastro usuario = (UsuarioCadastro) target;
 		
 		if(!(usuario.getSenha().equals(usuario.getSenhaConfirma()))){
 			errors.rejectValue("senhaConfirma", "menu.usuarios.notmatch.senhas");
