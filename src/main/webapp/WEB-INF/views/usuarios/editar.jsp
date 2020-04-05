@@ -9,15 +9,13 @@
 	<section id="index-section" class="container middle">
 	
 	<div class="container">
-		<br />
-	    <a href="${s:mvcUrl('UC#form').build()}">Novo usuário</a>
-		<h1>Lista de Usuarios</h1>
+		<h1>Cadastro de Permissões para USUARIO</h1>
 		<p> ${sucesso} </p>
 		<p> ${falha} </p>
 	
 		<p>Permissoes:
 		
-			<form:form action="${s:mvcUrl('UC#gravar').build() }" method="post" commandName="usuario"> 
+			<form:form action="${s:mvcUrl('UC#gravar').build() }" method="post" commandName="role"> 
 			<c:forEach items="${roles }" var="role">
 				<form:checkbox path="role.getNome()"/>
 				<label>role.getNome()</label>
