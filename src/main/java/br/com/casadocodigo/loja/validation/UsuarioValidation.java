@@ -11,7 +11,7 @@ public class UsuarioValidation implements Validator {
 
 	@Override
 	public boolean supports(Class<?> clazz) {
-		return Usuario.class.isAssignableFrom(clazz);
+		return UsuarioCadastro.class.isAssignableFrom(clazz);
 	}
 
 	@Override
@@ -30,13 +30,10 @@ public class UsuarioValidation implements Validator {
 		if(usuario.getSenha().length() < 5) {
 			errors.rejectValue("senha", "menu.usuarios.senha.tamanho");
 		}
-	
 		
 		if(!(usuario.getSenha().equals(usuarioCadastro.getSenhaConfirma()))){
 			errors.rejectValue("senhaConfirma", "menu.usuarios.notmatch.senhas");
 		}
-		
-
 		
 	}
 
