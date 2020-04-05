@@ -19,11 +19,19 @@
 			<tr>
 				<th>Nome</th>
 				<th>Email</th>
+				<th>Roles</th>
+				<th></th>
 			</tr>
 			<c:forEach items="${usuarios }" var="usuario">
 				<tr>
 					<td>${usuario.nome }</a> </td>
 					<td>${usuario.email }</td>
+					<td>
+						<c:forEach items="${usuario.getRoles() }" var="role">
+							${role.getAuthority() }, 
+						</c:forEach>
+					</td>
+					<td></td>
 				</tr>
 			</c:forEach>
 		</table>
