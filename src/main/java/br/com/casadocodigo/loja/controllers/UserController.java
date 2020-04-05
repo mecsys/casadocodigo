@@ -5,6 +5,7 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -18,6 +19,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.com.casadocodigo.loja.dao.UsuarioDAO;
 import br.com.casadocodigo.loja.models.Usuario;
+import br.com.casadocodigo.loja.models.UsuarioCadastro;
 import br.com.casadocodigo.loja.validation.UsuarioValidation;
 
 @Controller
@@ -54,7 +56,7 @@ public class UserController {
 	}
 	
 	@RequestMapping(method = RequestMethod.POST)
-	public ModelAndView gravar(@Valid Usuario usuario, BindingResult result, 
+	public ModelAndView gravar(@Valid UsuarioCadastro usuario, BindingResult result, 
 			RedirectAttributes model) {
 		
 		if(result.hasErrors()) {
@@ -69,13 +71,11 @@ public class UserController {
 			model.addFlashAttribute("falha", "Usuario ja cadastrado!");
 			return new ModelAndView("redirect:/usuarios");
 		}
-		
-		
-		PasswordEncoder encoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
+
+		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder(12); // Strength set as 12
 		usuario.setSenha(encoder.encode(usuario.getSenha()));
-		usuario.setSenhaConfirma(encoder.encode(usuario.getSenhaConfirma()));
 		
-		usuarioDao.gravar(usuario);
+		usuarioDao.gravar((Usuario) usuario);
 		
 		model.addFlashAttribute("sucesso", "Usuario cadastrado com sucesso!");
 		
