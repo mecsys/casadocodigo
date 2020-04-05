@@ -14,26 +14,26 @@
 					<ul class="nav navbar-nav navbar-left">
 					<security:authorize access="hasRole('ROLE_ADMIN')">
 						<li><a href="${s:mvcUrl('PC#listar').build() }" rel="nofollow"><fmt:message key="menu.lista_produtos"/></a></li>
-						<li><a href="${s:mvcUrl('PSC#listarPedidos').build() }" rel="nofollow"><fmt:message key="menu.lista_pedidos"/></a></li>
-						<li><a href="${s:mvcUrl('UC#listarUsuarios').build() }" rel="nofollow"><fmt:message key="menu.lista_usuarios"/></a></li>
+						<li><a href="${s:mvcUrl('PSC#listar').build() }" rel="nofollow"><fmt:message key="menu.lista_pedidos"/></a></li>
+						<li><a href="${s:mvcUrl('UC#listar').build() }" rel="nofollow"><fmt:message key="menu.lista_usuarios"/></a></li>
 						<li><a href="${s:mvcUrl('PC#form').build() }" rel="nofollow"><fmt:message key="menu.cadastro_produtos"/></a></li>
 					</security:authorize>
-<!-- 						<li> -->
-<%-- 							<a href="${s:mvcUrl('CCC#itens').build() }" rel="nofollow"> --%>
-<%-- 								<s:message code="menu.carrinho" arguments="${carrinhoCompras.quantidade}" /> --%>
-<!-- 							</a> -->
-<!-- 						</li> -->
-<!-- 						<li> -->
-<!-- 						    <a href="?locale=pt" rel="nofollow"> -->
-<%-- 						        <fmt:message key="menu.pt"/> --%>
-<!-- 						    </a> -->
-<!-- 						</li> -->
+						<li>
+							<a href="${s:mvcUrl('CCC#itens').build() }" rel="nofollow">
+								<s:message code="menu.carrinho" arguments="${carrinhoCompras.quantidade}" />
+							</a>
+						</li>
+						<li>
+						    <a href="?locale=pt" rel="nofollow">
+						        <fmt:message key="menu.pt"/>
+						    </a>
+						</li>
 						
-<!-- 						<li> -->
-<!-- 						    <a href="?locale=en_US" rel="nofollow"> -->
-<%-- 						        <fmt:message key="menu.en"/> --%>
-<!-- 						    </a> -->
-<!-- 						</li> -->
+						<li>
+						    <a href="?locale=en_US" rel="nofollow">
+						        <fmt:message key="menu.en"/>
+						    </a>
+						</li>
 					<security:authorize access="isAuthenticated()">
 				      	 <li><a href="<c:url value="/logout" />">Sair</a></li>
 				    </security:authorize>

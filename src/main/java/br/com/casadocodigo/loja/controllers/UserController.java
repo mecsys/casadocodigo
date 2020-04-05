@@ -19,6 +19,7 @@ import br.com.casadocodigo.loja.models.Usuario;
 import br.com.casadocodigo.loja.validation.UsuarioValidation;
 
 @Controller
+@RequestMapping("/usuarios")
 public class UserController {
 	
 	@Autowired
@@ -29,8 +30,8 @@ public class UserController {
 		binder.addValidators(new UsuarioValidation());
 	}
 	
-	@RequestMapping("/usuarios")
-	public ModelAndView listarUsuarios(RedirectAttributes model) {
+	@RequestMapping( method=RequestMethod.GET)
+	public ModelAndView listar(RedirectAttributes model) {
 		
 		final List<Usuario> usuarios;
 		
@@ -43,7 +44,7 @@ public class UserController {
 		
 	}
 	
-	@RequestMapping("/usuarios/form")
+	@RequestMapping("/form")
 	public ModelAndView form(Usuario usuario) {
 		
 		return new ModelAndView("usuarios/form");
@@ -64,14 +65,14 @@ public class UserController {
 		if(usuarioDao.hasUserByUsername(usuario.getEmail())) {
 			
 			model.addFlashAttribute("falha", "Usuario ja cadastrado!");
-			return new ModelAndView("usuarios/lista");
+			return new ModelAndView("redirect:/usuarios/lista");
 		}
 		
 		usuarioDao.gravar(usuario);
 		
 		model.addFlashAttribute("sucesso", "Usuario cadastrado com sucesso!");
 		
-		return new ModelAndView("usuarios/lista");
+		return new ModelAndView("redirect:/usuarios/lista");
 		
 	}
 	
