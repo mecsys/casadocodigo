@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.Transient;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -23,6 +24,9 @@ public class Usuario implements UserDetails {
 	private String email;
 	private String nome;
 	private String senha;
+	
+	@Transient // Não persistir, property de apoio ao cadastro de usuario
+	private String senhaConfirma;
 
 	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "Usuario_Role", joinColumns = @JoinColumn(name = "email"), inverseJoinColumns = @JoinColumn(name = "role_nome"))
@@ -42,6 +46,14 @@ public class Usuario implements UserDetails {
 
 	public void setSenha(String senha) {
 		this.senha = senha;
+	}
+
+	public String getSenhaConfirma() {
+		return senhaConfirma;
+	}
+
+	public void setSenhaConfirma(String senhaConfirma) {
+		this.senhaConfirma = senhaConfirma;
 	}
 
 	public String getNome() {

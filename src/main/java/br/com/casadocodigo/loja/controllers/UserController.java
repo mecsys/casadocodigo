@@ -17,7 +17,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.com.casadocodigo.loja.dao.UsuarioDAO;
 import br.com.casadocodigo.loja.models.Usuario;
-import br.com.casadocodigo.loja.models.UsuarioCadastro;
 import br.com.casadocodigo.loja.validation.UsuarioValidation;
 
 @Controller
@@ -54,7 +53,7 @@ public class UserController {
 	}
 	
 	@RequestMapping(method = RequestMethod.POST)
-	public ModelAndView gravar(@Valid UsuarioCadastro usuario, BindingResult result, 
+	public ModelAndView gravar(@Valid Usuario usuario, BindingResult result, 
 			RedirectAttributes model) {
 		
 		if(result.hasErrors()) {
@@ -73,7 +72,7 @@ public class UserController {
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder(12); // Strength set as 12
 		usuario.setSenha(encoder.encode(usuario.getSenha()));
 		
-		usuarioDao.gravar((Usuario) usuario);
+		usuarioDao.gravar(usuario);
 		
 		model.addFlashAttribute("sucesso", "Usuario cadastrado com sucesso!");
 		
