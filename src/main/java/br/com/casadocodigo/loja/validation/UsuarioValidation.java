@@ -26,7 +26,7 @@ public class UsuarioValidation implements Validator {
 		Usuario usuario = (Usuario) target;
 		
 		if(!(usuario.getSenha().equals(usuario.getSenhaConfirma()))){
-			errors.rejectValue("senha", "menu.usuarios.notmatch.senha");
+			errors.rejectValue("senhaConfirma", "menu.usuarios.notmatch.senhasa");
 		}
 		
 		if(usuario.getSenha().length() < 5) {
