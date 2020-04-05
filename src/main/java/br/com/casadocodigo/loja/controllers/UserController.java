@@ -73,6 +73,7 @@ public class UserController {
 		
 		PasswordEncoder encoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
 		usuario.setSenha(encoder.encode(usuario.getSenha()));
+		usuario.setSenhaConfirma(encoder.encode(usuario.getSenhaConfirma()));
 		
 		usuarioDao.gravar(usuario);
 		
