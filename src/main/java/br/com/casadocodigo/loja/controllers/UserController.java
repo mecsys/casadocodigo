@@ -12,6 +12,7 @@ import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -77,6 +78,15 @@ public class UserController {
 		model.addFlashAttribute("sucesso", "Usuario cadastrado com sucesso!");
 		
 		return new ModelAndView("redirect:/usuarios");
+		
+	}
+	
+	
+	public ModelAndView editar(RedirectAttributes model) {
+		
+		model.addFlashAttribute("sucesso", "Usuario editado com sucesso!");
+		
+		return new ModelAndView("usuarios");
 		
 	}
 	
