@@ -86,12 +86,11 @@ public class UserController {
 	}
 	
 	@RequestMapping("/editar")
-	public ModelAndView editar(@Valid Usuario usuario, RedirectAttributes model) {
+	public ModelAndView editar(RedirectAttributes model) {
 		
 		List<Role> roles = roleDao.listar();
 		
 		ModelAndView modelAndView = new ModelAndView("usuarios/editar");
-		modelAndView.addObject("usuario", usuario);
 		modelAndView.addObject("roles", roles);
 		model.addFlashAttribute("sucesso", "Usuario editado com sucesso!");
 		
