@@ -12,11 +12,12 @@ import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import br.com.casadocodigo.loja.dao.RoleDAO;
 import br.com.casadocodigo.loja.dao.UsuarioDAO;
+import br.com.casadocodigo.loja.models.Role;
 import br.com.casadocodigo.loja.models.Usuario;
 import br.com.casadocodigo.loja.validation.UsuarioValidation;
 
@@ -26,6 +27,9 @@ public class UserController {
 	
 	@Autowired
 	private UsuarioDAO usuarioDao;
+	
+	@Autowired
+	private RoleDAO roleDao;
 	
 	@InitBinder
 	public void initBinder(WebDataBinder binder) {
@@ -81,12 +85,17 @@ public class UserController {
 		
 	}
 	
-	
-	public ModelAndView editar(RedirectAttributes model) {
+	@RequestMapping("/editar")
+	public ModelAndView editar(@Valid Usuario usuario, RedirectAttributes model) {
 		
+		List<Role> roles = roleDao.listar();
+		
+		ModelAndView modelAndView = new ModelAndView("usuarios/editar");
+		modelAndView.addObject("usuario", usuario);
+		modelAndView.addObject("roles", roles);
 		model.addFlashAttribute("sucesso", "Usuario editado com sucesso!");
 		
-		return new ModelAndView("usuarios");
+		return modelAndView;
 		
 	}
 	
