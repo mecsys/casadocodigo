@@ -16,11 +16,13 @@
 		<p>Permissoes:
 		
 			<form:form action="${s:mvcUrl('UC#updateRoles').build() }" method="post"> 
-			<c:forEach items="${roles }" var="role">
+			
+			<c:forEach items="${usuario.getRoles() }" var="role">
 				<form:checkbox path="role.getNome()"/>
 				<label>role.getNome()</label>
 			</c:forEach>
-			<button type="submit" class="btn btn-primary">Cadastrar</button>
+			
+			<button type="submit" class="btn btn-primary">Atualizar</button>
 			</form:form>
 			
 		</p>
