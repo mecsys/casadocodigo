@@ -88,7 +88,7 @@ public class UserController {
 	}
 	
 	@RequestMapping("/editar")
-	public ModelAndView editar(@PathVariable("nome") String email) {
+	public ModelAndView editar(@PathVariable("email") String email) {
 		
 		 Usuario usuario = usuarioDao.loadUserByUsername(email);
 		 
