@@ -2,6 +2,7 @@ package br.com.casadocodigo.loja.controllers;
 
 import java.util.List;
 
+import javax.mail.internet.InternetAddress;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -88,7 +89,7 @@ public class UserController {
 	}
 	
 	@RequestMapping("/editar/{id}")
-	public ModelAndView editar(@PathVariable("id") String email) {
+	public ModelAndView editar(@PathVariable("id") InternetAddress email) {
 		
 		 Usuario usuario = usuarioDao.loadUserByUsername(email);
 		 
