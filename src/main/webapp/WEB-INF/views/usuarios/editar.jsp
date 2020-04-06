@@ -9,13 +9,13 @@
 	<section id="index-section" class="container middle">
 	
 	<div class="container">
-		<h1>Cadastro de Permissões para USUARIO</h1>
+		<h1>Cadastro de Permissões para ${usuario.nome} }</h1>
 		<p> ${sucesso} </p>
 		<p> ${falha} </p>
 	
 		<p>Permissoes:
 		
-			<form:form action="${s:mvcUrl('UC#updateRoles').build() }" method="post" commandName="roles"> 
+			<form:form action="${s:mvcUrl('UC#updateRoles').build() }" method="post"> 
 			<c:forEach items="${roles }" var="role">
 				<form:checkbox path="role.getNome()"/>
 				<label>role.getNome()</label>

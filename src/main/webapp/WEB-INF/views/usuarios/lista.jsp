@@ -31,7 +31,7 @@
 							${role.getAuthority() }, 
 						</c:forEach>
 					</td>
-					<td><a href="${s:mvcUrl('UC#editar').build()}">Editar</a></td>
+					<td><a href="${s:mvcUrl('UC#editar').arg(0, usuario.email).build()}">Editar</a></td>
 				</tr>
 			</c:forEach>
 		</table>
