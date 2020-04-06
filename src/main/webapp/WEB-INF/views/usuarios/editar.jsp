@@ -15,7 +15,7 @@
 	
 		<p>Permissoes:
 		
-			<form:form action="${s:mvcUrl('UC#gravar').build() }" method="post" commandName="roles"> 
+			<form:form action="${s:mvcUrl('UC#updateRoles').build() }" method="post" commandName="roles"> 
 			<c:forEach items="${roles }" var="role">
 				<form:checkbox path="role.getNome()"/>
 				<label>role.getNome()</label>
