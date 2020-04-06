@@ -19,7 +19,7 @@
 			
 			<c:forEach items="${usuario.getRoles() }" var="role" varStatus="status">
 			
-				<form:checkbox path="roles[${status.index}].selected"/>
+				<form:checkboxs path="roles[${status.index}].selected"/>
 				<label>role.getNome()</label>
 				
 			</c:forEach>

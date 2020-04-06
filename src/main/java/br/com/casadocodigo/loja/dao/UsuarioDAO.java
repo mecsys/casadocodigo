@@ -22,11 +22,13 @@ public class UsuarioDAO implements UserDetailsService{
 	private EntityManager manager;
 
 	public Usuario loadUserByUsername(String email) {
+		System.out.println("Email recebido: " + email);
 		List<Usuario> usuarios = manager.createQuery("select u from Usuario u where email = :email", Usuario.class)
 				.setParameter("email", email)
 				.getResultList();
 		
 		if(usuarios.isEmpty()) {
+			System.out.println(usuarios.get(0).getEmail());
 			throw new UsernameNotFoundException("Usuario " + email + " não foi encontrado");
 		}
 		
