@@ -17,9 +17,11 @@
 		
 			<form:form action="${s:mvcUrl('UC#updateRoles').build() }" method="post"> 
 			
-			<c:forEach items="${usuario.getRoles() }" var="role">
-				<form:checkbox path="${role.getNome(} }"/>
+			<c:forEach items="${usuario.getRoles() }" var="role" varStatus="status">
+			
+				<form:checkbox path="roles[${status.index}].selected"/>
 				<label>role.getNome()</label>
+				
 			</c:forEach>
 			
 			<button type="submit" class="btn btn-primary">Atualizar</button>
