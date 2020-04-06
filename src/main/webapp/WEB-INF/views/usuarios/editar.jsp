@@ -9,7 +9,7 @@
 	<section id="index-section" class="container middle">
 	
 	<div class="container">
-		<h1>Cadastro de Permissões para ${usuario.nome} }</h1>
+		<h1>Cadastro de Permissões para usuario.nome }</h1>
 		<p> ${sucesso} </p>
 		<p> ${falha} </p>
 	
@@ -18,7 +18,7 @@
 			<form:form action="${s:mvcUrl('UC#updateRoles').build() }" method="post"> 
 			
 			<c:forEach items="${usuario.getRoles() }" var="role">
-				<form:checkbox path="role.getNome()"/>
+				<form:checkbox path="roles"/>
 				<label>role.getNome()</label>
 			</c:forEach>
 			
