@@ -19,7 +19,8 @@ import br.com.casadocodigo.loja.models.Produto;
 import br.com.casadocodigo.loja.models.TipoPreco;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes= {JPAConfiguration.class, ProdutoDAO.class, DataSourceConfigurationTest.class})
+//@ContextConfiguration(classes= {JPAConfiguration.class, ProdutoDAO.class, DataSourceConfigurationTest.class})
+@ContextConfiguration(classes= {JPAConfiguration.class, ProdutoDAO.class})
 @ActiveProfiles("test")
 public class ProdutoDAOTest {
 	
