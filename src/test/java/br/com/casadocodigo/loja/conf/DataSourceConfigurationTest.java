@@ -15,10 +15,10 @@ public class DataSourceConfigurationTest {
 	@Profile("test")
 	public DataSource dataSource(){
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
-		dataSource.setUrl("jdbc:mysql://mysql-test:3306/casadocodigo_test");
+		dataSource.setUrl("jdbc:mysql://localhost:3306/casadocodigo_test");
 		dataSource.setDriverClassName("com.mysql.jdbc.Driver");
 		dataSource.setUsername("casadocodigo_test");
-		dataSource.setPassword("casadocodigo_test");
+		dataSource.setPassword("");
 		return dataSource;
 	}
 	

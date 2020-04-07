@@ -1,26 +1,16 @@
 ## Ambiente 
 
- Aplicação foi testado com JRE9 no Apache Tomcat 9
+ Aplicação foi testado com JRE8 e JRE9 no Apache Tomcat 7, 8, 9
  
 ## MySQL
 
-O projeto usa MySQL no endereco IP (localhost ou 127.0.0.1) e deve existir já o banco `casadocodigo` (usuario `casadocodigo` sem senha). O JPA foi configurado para dropar e gerar as tables automaticamente ao iniciar (na classe `JPAConfiguration`). Caso queira gerar as tabelas manualmente, abaixo desse README tem os comandos SQL.
+O projeto usa MySQL e deve existir já o banco `casadocodigo` (sem senha). O JPA foi configurado para dropar e gerar as tables automaticamente ao iniciar (na classe `JPAConfiguration`). Caso queira gerar as tabelas manualmente, abaixo desse README tem os comandos SQL.
 
-## MySQL MAVEN TESTE
-
-O projeto usa MySQL no endereco IP (localhost ou 127.0.0.1) e deve existir já o banco `casadocodigo_test` (usuario `casadocodigo_test`sem senha). O JPA foi configurado para dropar e gerar as tables automaticamente ao iniciar (na classe `JPAConfiguration`). Caso queira gerar as tabelas manualmente, abaixo desse README tem os comandos SQL.
-
-## Compilação com e sem testes
+## Compilação
 
  Para compilar immporte o projeto no Eclipse (*Import as Maven Projeto*) ou compile na linha de comando usando Maven:
 
- 	Com testes: Necessario habilitar banco mysql para testes
-
 	mvn clean package
-
-	Sem testes:
-
-	mvn clean package -D skipTests=true
 
 ## Profile DEV
 
@@ -38,9 +28,7 @@ Ao rodar no Eclipse pelo  Tomcat acesse:
 
 	http://localhost:8080/casadocodigo
 	
-Execute a "URL Mágica" para cadastrar produtos e um usuario padrão (Login: admin@casadocodigo.com.br, Senha: 123456)
- 
- A "URL Mágica" se econtra na configuração "SecurityConfiguration".
+Execute a "URL Mágica" para cadastrar produtos e um usuario padrão (Login: admin@casadocodigo.com.br, Senha: 123456)	
 
 ## SQL para geração das tables
 
