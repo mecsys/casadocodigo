@@ -6,7 +6,7 @@
 
 O projeto usa MySQL no endereco IP (localhost ou 127.0.0.1) e deve existir já o banco `casadocodigo` (usuario `casadocodigo` sem senha). O JPA foi configurado para dropar e gerar as tables automaticamente ao iniciar (na classe `JPAConfiguration`). Caso queira gerar as tabelas manualmente, abaixo desse README tem os comandos SQL.
 
-## MySQL MAVEN TESTE
+## MySQL MAVEN/JUNIT TESTE
 
 O projeto usa MySQL no endereco IP (localhost ou 127.0.0.1) e deve existir já o banco `casadocodigo_test` (usuario `casadocodigo_test`sem senha). O JPA foi configurado para dropar e gerar as tables automaticamente ao iniciar (na classe `JPAConfiguration`). Caso queira gerar as tabelas manualmente, abaixo desse README tem os comandos SQL.
 
