@@ -105,13 +105,9 @@ public class UserController {
 
 		ModelAndView modelAndView = new ModelAndView("redirect:/usuarios");
 		
-		System.out.println("Antes: " + usuario);
-		
 		Usuario usuarioUpdate = usuarioDao.loadUserByUsername(usuario.getEmail());
 		usuarioUpdate.setRoles(usuario.getRoles());
 		usuarioDao.gravar(usuarioUpdate);
-		
-		System.out.println("Depois: " + usuarioUpdate);
 		
 		model.addFlashAttribute("sucesso", "Permissões alteradas com sucesso!");
 
