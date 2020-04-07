@@ -107,10 +107,11 @@ public class UserController {
 		
 		System.out.println("Antes: " + usuario);
 		
-//		usuario = usuarioDao.loadUserByUsername(usuario.getEmail());
-		usuarioDao.gravar(usuario);
+		Usuario usuarioUpdate = usuarioDao.loadUserByUsername(usuario.getEmail());
+		usuarioUpdate.setRoles(usuario.getRoles());
+		usuarioDao.gravar(usuarioUpdate);
 		
-		System.out.println("Depois: " + usuario);
+		System.out.println("Depois: " + usuarioUpdate);
 		
 		model.addFlashAttribute("sucesso", "Permissões alteradas com sucesso!");
 
