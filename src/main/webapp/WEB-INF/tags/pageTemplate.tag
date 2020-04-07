@@ -28,6 +28,7 @@
 		<link href="${contextPath}resources/css/produtos.css" rel="stylesheet" type="text/css" media="all" />
 		<link href="${contextPath}resources/css/book-collection.css" rel="stylesheet" type="text/css" media="all" />
 		<link rel="canonical" href="http://www.casadocodigo.com.br/" />
+		<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 	</head>
 	<body class="${bodyClass}">
 

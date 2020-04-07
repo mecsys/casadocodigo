@@ -31,7 +31,7 @@
 							${role.getNome()}, 
 						</c:forEach>]
 					</td>
-					<td><a href="${s:mvcUrl('UC#editar').arg(0, usuario.email).build()}">Editar</a></td>
+					<td><a class="w3-button w3-xlarge w3-circle w3-teal" href="${s:mvcUrl('UC#editar').arg(0, usuario.email).build()}">+</a></td>
 				</tr>
 			</c:forEach>
 		</table>
