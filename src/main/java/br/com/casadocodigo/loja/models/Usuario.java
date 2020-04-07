@@ -110,7 +110,7 @@ public class Usuario implements UserDetails {
 	@Override
 	public String toString() {
 		
-		return "Usuario id: " + this.getEmail();
+		return "Usuario id: " + this.getEmail() + " nome: " + this.getNome() + " permissoes: " + this.getRoles();
 				
 	}
 

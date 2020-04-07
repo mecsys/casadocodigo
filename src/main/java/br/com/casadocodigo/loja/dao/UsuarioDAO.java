@@ -2,14 +2,11 @@ package br.com.casadocodigo.loja.dao;
 
 import java.util.List;
 
-import javax.mail.internet.InternetAddress;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.crypto.factory.PasswordEncoderFactories;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -34,20 +31,6 @@ public class UsuarioDAO implements UserDetailsService{
 		return usuarios.get(0);
 	}
 	
-	public Usuario loadUserByUsername(InternetAddress email) {
-		System.out.println("Email recebido: " + email);
-		List<Usuario> usuarios = manager.createQuery("select u from Usuario u where email = :email", Usuario.class)
-				.setParameter("email", email)
-				.getResultList();
-		
-		if(usuarios.isEmpty()) {
-			System.out.println(usuarios);
-			throw new UsernameNotFoundException("Usuario " + email + " não foi encontrado");
-		}
-		
-		return usuarios.get(0);
-	}
-
 	public boolean hasUserByUsername(String email) {
 		List<Usuario> usuarios = manager.createQuery("select u from Usuario u where email = :email", Usuario.class)
 				.setParameter("email", email)

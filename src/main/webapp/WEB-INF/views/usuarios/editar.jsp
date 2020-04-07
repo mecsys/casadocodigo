@@ -12,19 +12,17 @@
 		<h1>Cadastro de Permissões para ${usuario.nome }</h1>
 		<p> ${sucesso} </p>
 		<p> ${falha} </p>
-	
-		<p>Permissoes:
 		
-			<form:form action="${s:mvcUrl('UC#updateRoles').build() }" method="post"> 
+			<form:form action="${s:mvcUrl('UC#updateRoles').build() }" method="post"  commandName="usuario"> 
 			
-			<c:forEach items="${usuario.getRoles() }" var="role" varStatus="status">
-			
-				<form:checkboxs path="roles[${status.index}].selected"/>
-				<label>role.getNome()</label>
+		 		Permissoes: 	
+				<form:checkboxes path="roles" items="${roleList}"/>
+				<form:hidden path="nome"/>
+				<form:hidden path="email"/>
 				
-			</c:forEach>
-			
-			<button type="submit" class="btn btn-primary">Atualizar</button>
+				<br />
+				<button type="submit" class="btn btn-primary">Atualizar</button>
+				
 			</form:form>
 			
 		</p>

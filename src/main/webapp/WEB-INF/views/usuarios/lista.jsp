@@ -27,9 +27,9 @@
 					<td>${usuario.nome }</a> </td>
 					<td>${usuario.email }</td>
 					<td>
-						<c:forEach items="${usuario.getRoles() }" var="role">
-							${role.getAuthority() }, 
-						</c:forEach>
+						[<c:forEach items="${usuario.getRoles() }" var="role">
+							${role.getNome()}, 
+						</c:forEach>]
 					</td>
 					<td><a href="${s:mvcUrl('UC#editar').arg(0, usuario.email).build()}">Editar</a></td>
 				</tr>
