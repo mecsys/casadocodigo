@@ -27,14 +27,6 @@ public class PedidosServicoController {
 		ResponseEntity<Pedido[]> response = restTemplate.getForEntity(uri, Pedido[].class);
 		Pedido[] pedidos = response.getBody();
 
-		// testando json pedidos para array de pedidos
-		for (Pedido pedido : pedidos) {
-
-			System.out.println("Lista de pedidos: " + pedido);
-			System.out.println("---");
-
-		}
-
 		modelAndView.addObject("pedidos", pedidos);
 
 		return modelAndView;
